@@ -144,7 +144,7 @@ export default class App extends React.Component {
       if (a === 'join' || a === 'leave') {
 
         if (a === 'join' && b.attendees.length >= b.capacity) {
-          myAlert('Event is at full capacity :(. Please try later when somebody leaves.');
+          myAlert('Cannot join event as it is at full capacity :(.');
         } //add/remove attendee:
         else {
           let joinOps = Object.assign({}, this.ops);
@@ -263,7 +263,7 @@ export default class App extends React.Component {
     this.setState({showPass: !this.state.showPass});
   }
   handleSubmit(arg, evt) {
-    let id, date, email, password, err;
+    let id, email, err;
 
     let errObj = {};
 

@@ -28,21 +28,19 @@ export const Item = (props) => {
       <button className='btn--edit'>Edit</button></Link>
     )} 
   else if (future && leave) {
-    btn = (
-      <button className='btn--leave' onClick={(evt) => {evt.stopPropagation(); props.handleBtnClick('leave', event)}}>Leave</button>
-    )}
-  else if (!future && leave) {
-    <button className='btn--disabled' onClick={(evt) => {evt.stopPropagation(); myAlert('Cannot join event as it has already happened!')}}>Leave</button>
+    btn = <button className='btn--leave' onClick={(evt) => {evt.stopPropagation(); props.handleBtnClick('leave', event)}}>Leave</button>
   }
-  else if (future && !leave) {
-    btn = (
-      <button className='btn--join' onClick={(evt) => {evt.stopPropagation(); props.handleBtnClick('join', event)}}>Join</button>
-    )
+  else if (!future && leave) {
+    btn = <button className='btn--disabled' onClick={(evt) => {evt.stopPropagation(); myAlert('Cannot join event as it has already happened!')}}>Leave</button>
+  }
+  else if (future && !leave && !full) {
+    btn = <button className='btn--join' onClick={(evt) => {evt.stopPropagation(); props.handleBtnClick('join', event)}}>Join</button>
+  }
+  else if (future && !leave && full) {
+    btn = <button className='btn--disabled' onClick={(evt) => {evt.stopPropagation(); props.handleBtnClick('join', event)}}>Join</button>
   }
   else if (!future && !leave) {
-    btn = (
-      <button className='btn--disabled' onClick={(evt) => {evt.stopPropagation(); myAlert('Cannot join event as it has already happened!')}}>Join</button>
-    )
+    btn = <button className='btn--disabled' onClick={(evt) => {evt.stopPropagation(); myAlert('Cannot join event as it has already happened!')}}>Join</button>
   }
 
   const months = ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
