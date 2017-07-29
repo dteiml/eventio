@@ -1,0 +1,127 @@
+$inputSize: 380px;
+
+.auth__main {
+  background: white;
+  height: 100vh;
+  width: 100vw;
+}
+
+.auth__container {
+  width: 100%;
+  margin: 0 20%;
+
+}
+
+.auth__form {
+  width: 100%;
+  max-width: 450px;
+
+  label {
+    font-size: 1.2rem;
+  }
+
+  input {
+    border: none;
+    border-bottom: 1px solid $grey;
+    width: 100%;
+    max-width: $inputSize;
+    font-family: 'Hind-Medium';
+    font-size: 1.6rem;
+  }
+
+  input::placeholder {
+    color: $grey;
+  }
+}
+
+@media (max-width: 1100px) {
+  .auth__container {
+    margin: 5% auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .auth__form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    input {
+      margin: -5px 0;
+    }
+
+    .auth__showPass {
+      top: -8px;
+    }
+  }
+
+  label {
+    display: none;
+  }
+}
+
+  @media (min-width: 1101px) {
+    .auth__main  {
+      background-image: url(/stormtroopers4.jpg);
+      background-position: left;
+      background-repeat: no-repeat;
+      background-size: 450px 100%;
+
+      .header__logo {
+        color: white;
+      }
+
+      .auth__container {
+        width: 500px;
+        margin-left: 50%;
+        margin-top: 5%;
+      }
+    }
+
+  }
+
+.auth__passSpan {
+  position:relative;
+  display: flex;
+  width: 100%;
+  max-width: $inputSize;
+}
+
+.auth__showPass {
+  position: absolute;
+  right: 5px;
+}
+
+.auth__nav-text--bg {
+  @extend .smaller;
+  display: none
+}
+
+@media (min-width: 501px) {
+  .auth__nav-text--bg {
+    display: block;
+    padding-top: 25px;
+    padding-right: 50px;
+  }
+}
+
+.auth__nav-text {
+  @extend .smaller;
+  display: none;
+}
+
+@media (max-width: 500px) {
+  .auth__nav-text {
+    display: block;
+    padding: 10px 0;
+  }
+}
+
+.auth__nav-link {
+  text-decoration: none;
+  color: $black;
+  text-transform: uppercase;
+  font-weight: 400;
+  cursor: pointer;
+}

@@ -1,0 +1,68 @@
+//Rest is for dropdown btn
+
+.header__circle {
+  font-size: 1.3rem;
+  background-color: $grey;
+  border-radius: 50%;
+  color: $grey--dark;
+  margin-right: 10px;
+  text-align: center;
+  line-height: 40px;
+  height: 40px;
+  width: 40px;
+  display: inline-block;
+}
+
+.dropdown {
+  // position: absolute;
+  display: inline-block;
+}
+
+.dropbtn {
+    background-color: transparent;
+    color: $grey--dark;
+    font-weight: 400;
+    padding: 5px;
+    font-size: 1.6rem;
+    border: none;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+// .dropdown:hover .dropbtn {
+//     background-color: $grey;
+// }
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+@media (max-width: 500px) {
+  .navName {
+    display: none;
+  }
+}
+
+.dropdown__caret {
+  color: $grey;
+}
+
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #f9f9f9;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: $grey--dark;
+    padding: 5px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}

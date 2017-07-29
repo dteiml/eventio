@@ -1,0 +1,106 @@
+//App-wide
+.header__nav {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1170px;
+  margin: 0 auto;
+  position: relative;
+  // height: 200px;
+}
+
+.header__nav--signup {
+  @extend .header__nav;
+  max-width: 100%;
+  padding: 10px 30px;
+}
+
+
+.header__logo {
+  font-family: 'Hind-Bold';
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 3.6rem;
+  color: $black--darker;
+  margin-top: -5px;
+}
+
+//for /create
+
+
+.header__back {
+  color: $black;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.header__close {
+  color: #000000;
+  cursor: pointer;
+}
+
+@media (max-width: 500px) {
+  .header__close-text {
+    display: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .header__back {
+    display: none;
+  }
+}
+
+.header__delete {
+  @extend .-block-letters;
+  color: $pink;
+  margin: 0 10px 0 10px;
+  cursor: pointer;
+}
+
+.header__id {
+  @extend .-block-letters;
+  margin: 0 0 10px 10px;
+}
+
+//on the right
+
+.header {
+  display:flex;
+  justify-content: space-between;
+  max-width: 1170px;
+  margin: 30px auto;
+}
+//Component-specific:
+
+.header__display {
+  cursor: pointer;
+  padding: 10px;
+}
+
+  ///profile:
+
+
+@media (max-width: 700px) {
+  .header__filter {
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    font-weight: 700;
+
+    select {
+      text-transform: uppercase;
+      font-size: 1.2rem;
+      font-weight: 700;
+      border: none;
+      background-color: transparent;
+    }
+  }
+  .header__filter--bg {
+    display: none;
+  }
+}
+
+@media (min-width: 701px) {
+  .header__filter {
+    display: none;
+  }
+}

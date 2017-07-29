@@ -1,0 +1,33 @@
+
+//App-wide
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.body__main {
+  background-color: $grey--light;
+  height: -webkit-calc(100% - 90px);
+    height:    -moz-calc(100% - 90px);
+    height:         calc(100% - 90px);
+  min-height: -webkit-calc(100vh - 90px);
+    min-height:    -moz-calc(100vh - 90px);
+    min-height:         calc(100vh - 90px);
+  padding: 45px 30px;
+}
+
+.body__section {
+  max-width: 1110px;
+  margin: 7.5% auto;
+}
+
+.body__spinner {
+  position: relative;
+  top: 100px;
+  left: 50%;
+}
+
+.body__error {
+  color: red;
+  font-size: 1.4rem;
+}

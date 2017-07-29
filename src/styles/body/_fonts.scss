@@ -1,0 +1,48 @@
+html {
+  font-size: 62.5%;
+}
+
+@font-face {
+    font-family: 'Hind-Light';
+    src: url(/Hind-Light.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Hind-Medium';
+    src: url(/Hind-Medium.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Hind-Bold';
+    src: url(/Hind-Bold.ttf) format('truetype');
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: 'Hind-Medium', sans-serif;
+  font-weight: 300;
+  text-decoration: none;
+  color: $grey;
+}
+
+h1 {
+  font-size: 2.6rem;
+  padding: 5px 0;
+  color: $black;
+  font-weight: 200;
+}
+h2 {
+  font-size: 1.9rem;
+  padding: 10px 0 20px 0;
+  line-height: 125%;
+  font-weight: 200;
+}
+h3 {
+  font-size: 1.4rem;
+  padding: 5px 0 40px 0;
+  font-weight: 200;
+}
+
+.smaller {
+  font-size: 1.4rem;
+}
