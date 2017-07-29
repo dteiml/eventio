@@ -516,6 +516,8 @@ export default class App extends React.Component {
     return (
       <Switch>
           <Route exact path='/' render={(props) => {
+            this.onEnterPublicPage();
+            
             return <Login {...props} 
             err={this.state.err}
             
@@ -523,21 +525,24 @@ export default class App extends React.Component {
             handleChange={this.handleChange}
             handleShowPassword={this.handleShowPassword}
             renderForm={this.renderForm}
-            navigate={this.navigate}/>}}
-            onEnter={this.onEnterPublicPage}/>
+            navigate={this.navigate}/>
+          }}/>
 
           <Route exact path='/signup' render={(props) => {
+            this.onEnterPublicPage();
+
             return <Signup {...props} 
             err={this.state.err}
 
             handleSubmit={this.handleSubmit}
             handleChange={this.handleChange}
             renderForm={this.renderForm}
-            navigate={this.navigate}/>}}
-            onEnter={this.onEnterPublicPage} />
+            navigate={this.navigate}/>
+          }}/>
 
           <Route exact path='/home' render={(props) => {
             this.onEnterPrivatePage();
+
             return <Home {...props}
               pathname='home'
               loading={this.state.loading}
@@ -549,9 +554,11 @@ export default class App extends React.Component {
               fetchEvents={this.fetchEvents}
               handleBtnClick={this.handleBtnClick}
               onLogout={this.onLogout}/>
-          }} />
+          }}/>
 
           <Route exact path='/profile' render={(props) => {
+            this.onEnterPrivatePage();
+
             return <Home {...props}
             pathname='profile'
             loading={this.state.loading}
@@ -563,9 +570,11 @@ export default class App extends React.Component {
             fetchEvents={this.fetchEvents}
             handleBtnClick={this.handleBtnClick}
             onLogout={this.onLogout}/>
-          }} onEnter={this.onEnterPrivatePage}/>
+          }}/>
 
           <Route exact path='/create' render={(props) => {
+            this.onEnterPrivatePage();
+
             return <Create {...props} user={this.state.user}
             err={this.state.err}
             event={this.state.event}
@@ -575,9 +584,11 @@ export default class App extends React.Component {
             renderForm={this.renderForm}
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}/>
-          }} onEnter={this.onEnterPrivatePage}/>
+          }}/>
 
           <Route exact path='/detail:id' render={(props) => {
+            this.onEnterPrivatePage();
+
             return <Detail {...props} user={this.state.user}
             event={this.state.event}
             events={this.state.events}
@@ -587,9 +598,11 @@ export default class App extends React.Component {
             onLogout={this.onLogout}
             fetchEvent={this.fetchEvent}
             handleBtnClick={this.handleBtnClick}/>
-          }} onEnter={this.onEnterPrivatePage}/>
+          }}/>
 
           <Route exact path='/edit:id' render={(props) => {
+            this.onEnterPrivatePage();
+
             return <Edit {...props} user={this.state.user}
             event={this.state.event}
             events={this.state.events}
@@ -600,7 +613,7 @@ export default class App extends React.Component {
             fetchEvent={this.fetchEvent}
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}/>
-          }} onEnter={this.onEnterPrivatePage} />
+          }}/>
 
           <Route path='*' render={(props) => {
             return <NotFound 
