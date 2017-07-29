@@ -19,6 +19,8 @@ export const Item = (props) => {
   if (date < currentDate) {
     future = false;
   }
+
+  const full = event.attendees.length >= event.capacity ? true : false;
   let btn;
 
   if (props.user && event.owner.id === props.user.id && props.type !== 'wide') {
@@ -34,7 +36,8 @@ export const Item = (props) => {
     btn = <button className='btn--disabled' onClick={(evt) => {evt.stopPropagation(); myAlert('Cannot join event as it has already happened!')}}>Leave</button>
   }
   else if (future && !leave && !full) {
-    btn = <button className='btn--join' onClick={(evt) => {evt.stopPropagation(); props.handleBtnClick('join', event)}}>Join</button>
+    btn = <button className='btn--join' onClick={(evt) => {evt.stopPropagation(); myAlert('Cannot join event as it is at full capacity :(.');
+        } //add/remove attendee:}>Join</button>
   }
   else if (future && !leave && full) {
     btn = <button className='btn--disabled' onClick={(evt) => {evt.stopPropagation(); props.handleBtnClick('join', event)}}>Join</button>

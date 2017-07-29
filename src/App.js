@@ -143,29 +143,24 @@ export default class App extends React.Component {
       let url;
       if (a === 'join' || a === 'leave') {
 
-        if (a === 'join' && b.attendees.length >= b.capacity) {
-          myAlert('Cannot join event as it is at full capacity :(.');
-        } //add/remove attendee:
-        else {
-          let joinOps = Object.assign({}, this.ops);
-          joinOps.method = a === 'join' ? 'POST' : 'DELETE';
-          joinOps.url += '/events/' + id + '/attendees/me';
-          this.setState({loading: true});
+        let joinOps = Object.assign({}, this.ops);
+        joinOps.method = a === 'join' ? 'POST' : 'DELETE';
+        joinOps.url += '/events/' + id + '/attendees/me';
+        this.setState({loading: true});
 
-          axios(joinOps)
-            .then(response => {
-              this.modifyAttendees(a, id);
-              this.setState({loading: false});
-            })
-            .catch(err => {
-              this.setState({loading: false});
-              if(err.response && err.response.data.error === 'Auth.InvalidToken') {
-                this.refreshToken();
-              } else {
-                myAlert('An error occured. Here are the details:' + err);
-              }
-            });
-        }
+        axios(joinOps)
+          .then(response => {
+            this.modifyAttendees(a, id);
+            this.setState({loading: false});
+          })
+          .catch(err => {
+            this.setState({loading: false});
+            if(err.response && err.response.data.error === 'Auth.InvalidToken') {
+              this.refreshToken();
+            } else {
+              myAlert('An error occured. Here are the details:' + err);
+            }
+          });
       }
       else if (a === 'detail') {
         url = '/detail:' + id;
