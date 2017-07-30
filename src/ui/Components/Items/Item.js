@@ -33,7 +33,7 @@ export const Item = (props) => {
     btn = <button className='btn--leave' onClick={(evt) => {evt.stopPropagation(); props.handleBtnClick('leave', event)}}>Leave</button>
   }
   else if (!future && leave) {
-    btn = <button className='btn--disabled' onClick={(evt) => {evt.stopPropagation(); myAlert('Cannot join event as it has already happened!')}}>Leave</button>
+    btn = <button className='btn--disabled' onClick={(evt) => {evt.stopPropagation(); myAlert('Cannot leave event as it has already happened!')}}>Leave</button>
   }
   else if (future && !leave && full) {
     btn = <button className='btn--disabled' onClick={(evt) => {evt.stopPropagation(); myAlert('Cannot join event as it is at full capacity :(.')}}>Join</button>;

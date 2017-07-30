@@ -15,6 +15,7 @@ import {Detail} from './ui/Scenes/Events/Detail';
 import * as constants from './constants';
 import axios from 'axios';
 
+// eslint-disable-next-line
 const emailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const minPasswordLength = 4;
 const passwordFormat = /[0-9!@#$%^&*]/; //at least 1 number or special character
@@ -103,6 +104,9 @@ export default class App extends React.Component {
   }
   refreshToken() {
     localStorage.removeItem('user');
+    this.setState(prevState => {
+      delete prevState.user; return prevState;
+    });
     this.props.history.push('/');
     myAlert('Your token has expired. Please login again.');
   }
@@ -122,7 +126,7 @@ export default class App extends React.Component {
           this.refreshToken();
         } else {
           this.props.location.reload();
-          myAlert('An error occured. Here are the details:' + err);
+          myAlert('An error occured. Here are the details: ' + err);
         }
       });
   }
@@ -158,7 +162,7 @@ export default class App extends React.Component {
             if(err.response && err.response.data.error === 'Auth.InvalidToken') {
               this.refreshToken();
             } else {
-              myAlert('An error occured. Here are the details:' + err);
+              myAlert('An error occured. Here are the details: ' + err);
             }
           });
       }
@@ -240,7 +244,7 @@ export default class App extends React.Component {
           setFormControl(response.data);
         })
         .catch(err => {
-          myAlert('An error occured. Here are the details:' + err);
+          myAlert('An error occured. Here are the details: ' + err);
         })
     }
   }
@@ -322,11 +326,11 @@ export default class App extends React.Component {
                 this.props.history.push('/home');
               })
               .catch(err => {
-                myAlert('An error occured. Here are the details:' + err);
+                myAlert('An error occured. Here are the details: ' + err);
               })
           })
           .catch(err => {
-            myAlert('An error occured. Here are the details:' + err);
+            myAlert('An error occured. Here are the details: ' + err);
           })
         }
     }
@@ -349,13 +353,13 @@ export default class App extends React.Component {
           this.props.history.push('/home');
         })
         .catch(err => {
-          if (err.response && err.response.error === 'User.InvalidPassword') {
+          if (err.response && err.response.data.error === 'User.InvalidPassword') {
             this.setState(prevState => {
               prevState.err.login = 'Oops! That email and password combination is not valid.'
               return prevState;
             })
           } else {
-            myAlert('An error occured. Here are the details:' + err);
+            myAlert('An error occured. Here are the details: ' + err);
           }
         });
     }
@@ -404,7 +408,7 @@ export default class App extends React.Component {
             if(err.response && err.response.data.error === 'Auth.InvalidToken') {
               this.refreshToken();
             } else {
-              myAlert('An error occured. Here are the details:' + err);
+              myAlert('An error occured. Here are the details: ' + err);
             }
             this.setState({loading: false});     
           });
@@ -432,7 +436,7 @@ export default class App extends React.Component {
                   if(err.response && err.response.data.error === 'Auth.InvalidToken') {
                     this.refreshToken();
                   } else {
-                    myAlert('An error occured. Here are the details:' + err);
+                    myAlert('An error occured. Here are the details: ' + err);
                   }
                   this.setState({loading: false});
                 });
@@ -494,10 +498,12 @@ export default class App extends React.Component {
   userEvents() {
     if (this.state.events) {
     const id = this.state.user.id;
+       // eslint-disable-next-line
       const eventsFiltered = this.state.events.filter(event => {
         if (event.owner.id === id) {
           return true;
         }
+        // eslint-disable-next-line
         const attendeesFiltered = event.attendees.filter(attendee => {
           if (attendee.id === id) {
             return true;
@@ -517,7 +523,7 @@ export default class App extends React.Component {
       <Switch>
           <Route exact path='/' render={(props) => {
             this.onEnterPublicPage();
-            
+
             return <Login {...props} 
             err={this.state.err}
             

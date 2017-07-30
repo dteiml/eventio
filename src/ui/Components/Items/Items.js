@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import {Item} from './Item';
 
 export const Items = (props) => {
+  // eslint-disable-next-line
   const items = props.events.map((event) => { 
 
     const currentDate = new Date();
